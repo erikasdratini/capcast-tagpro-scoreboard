@@ -6,6 +6,25 @@
 
 No subscriptions. No accounts. No cloud services. Just a scoreboard that works.
 
+**[Download the latest CAPCAST release](https://github.com/erikasdratini/capcast-tagpro-scoreboard/releases/tag/v1.1.0)** · [Installation](#installation) · [Features](#features) · [Privacy & security](#privacy-and-security)
+
+## Screenshots
+
+### Five-game regular-season scoreboard
+
+![CAPCAST five-game TagPro scoreboard overlay](screenshots/scoreboard-5-games.png)
+
+### Seven-game playoff scoreboard
+
+![CAPCAST seven-game TagPro scoreboard overlay](screenshots/scoreboard-7-games.png)
+
+### Live control dashboard
+
+![CAPCAST control dashboard with match configuration and OBS preview](screenshots/control-dashboard.png)
+
+---
+
+
 **Version:** 1.1 — Community Beta  
 **Platforms:** Windows, macOS, Linux  
 **Requirements:** Python 3 and OBS Studio  
