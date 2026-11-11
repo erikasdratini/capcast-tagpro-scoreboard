@@ -1,0 +1,365 @@
+{
+ "schemaVersion": 2,
+ "rev": 0,
+ "savedAt": null,
+ "mode": 5,
+ "teamA": "nban",
+ "teamB": "nmrv",
+ "meta": {
+  "league": "MLTP · MINORS",
+  "event": "NEW MATCH",
+  "label": "REGULAR SEASON",
+  "scale": 1
+ },
+ "games": [
+  {
+   "map": "Sardonica",
+   "scoreA": null,
+   "scoreB": null,
+   "ot": false,
+   "otWinner": null
+  },
+  {
+   "map": "Sardonica",
+   "scoreA": null,
+   "scoreB": null,
+   "ot": false,
+   "otWinner": null
+  },
+  {
+   "map": "Sardonica",
+   "scoreA": null,
+   "scoreB": null,
+   "ot": false,
+   "otWinner": null
+  },
+  {
+   "map": "Milano",
+   "scoreA": null,
+   "scoreB": null,
+   "ot": false,
+   "otWinner": null
+  },
+  {
+   "map": "Milano",
+   "scoreA": null,
+   "scoreB": null,
+   "ot": false,
+   "otWinner": null
+  },
+  {
+   "map": "TBD",
+   "scoreA": null,
+   "scoreB": null,
+   "ot": false,
+   "otWinner": null
+  },
+  {
+   "map": "TBD",
+   "scoreA": null,
+   "scoreB": null,
+   "ot": false,
+   "otWinner": null
+  }
+ ],
+ "presets": [
+  {
+   "id": "legacy-rotation",
+   "name": "Legacy: Sardonica / Milano",
+   "maps": [
+    "Sardonica",
+    "Sardonica",
+    "Sardonica",
+    "Milano",
+    "Milano",
+    "",
+    ""
+   ]
+  },
+  {
+   "id": "empty-rotation",
+   "name": "Blank map slots",
+   "maps": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ]
+  }
+ ],
+ "teams": [
+  {
+   "id": "msni",
+   "name": "Snipe Hunt",
+   "code": "MSNI",
+   "era": "Legacy · Majors",
+   "primary": "#EDE2CD",
+   "secondary": "#14253D",
+   "logo": null
+  },
+  {
+   "id": "mbst",
+   "name": "The Baseball Scene from Twilight",
+   "code": "MBST",
+   "era": "Legacy · Majors",
+   "primary": "#2377CB",
+   "secondary": "#F7C029",
+   "logo": null
+  },
+  {
+   "id": "mfwo",
+   "name": "FWO",
+   "code": "MFWO",
+   "era": "Legacy · Majors",
+   "primary": "#0D1528",
+   "secondary": "#6EB8FF",
+   "logo": null
+  },
+  {
+   "id": "mscp",
+   "name": "Secure, Contain, Prevent",
+   "code": "MSCP",
+   "era": "Legacy · Majors",
+   "primary": "#C51D56",
+   "secondary": "#F6E9EE",
+   "logo": null
+  },
+  {
+   "id": "mhoh",
+   "name": "Heart of the Hold",
+   "code": "MHOH",
+   "era": "Legacy · Majors",
+   "primary": "#1F1822",
+   "secondary": "#EC6F96",
+   "logo": null
+  },
+  {
+   "id": "mtpa",
+   "name": "TagPro Athletes",
+   "code": "MTPA",
+   "era": "Legacy · Majors",
+   "primary": "#D3427B",
+   "secondary": "#F6AC78",
+   "logo": null
+  },
+  {
+   "id": "mcvm",
+   "name": "Chasevictim",
+   "code": "MCVM",
+   "era": "Legacy · Majors",
+   "primary": "#4D8345",
+   "secondary": "#BDEBA5",
+   "logo": null
+  },
+  {
+   "id": "mlbt",
+   "name": "The Land Before Timers",
+   "code": "MLBT",
+   "era": "Legacy · Majors",
+   "primary": "#F6DB36",
+   "secondary": "#EC3F83",
+   "logo": null
+  },
+  {
+   "id": "nban",
+   "name": "Banchester Sit-Re",
+   "code": "NBAN",
+   "era": "Legacy · Minors",
+   "primary": "#F4AE27",
+   "secondary": "#17356A",
+   "logo": null
+  },
+  {
+   "id": "nraa",
+   "name": "Blockadillos and Alligators",
+   "code": "NRAA",
+   "era": "Legacy · Minors",
+   "primary": "#F49B15",
+   "secondary": "#1A1726",
+   "logo": null
+  },
+  {
+   "id": "nflr",
+   "name": "Furballers",
+   "code": "NFLR",
+   "era": "Legacy · Minors",
+   "primary": "#E49D00",
+   "secondary": "#284B4A",
+   "logo": null
+  },
+  {
+   "id": "nfwo",
+   "name": "FWO",
+   "code": "NFWO",
+   "era": "Legacy · Minors",
+   "primary": "#121C19",
+   "secondary": "#FFB023",
+   "logo": null
+  },
+  {
+   "id": "noph",
+   "name": "Over the Pants Handoffs",
+   "code": "NOPH",
+   "era": "Legacy · Minors",
+   "primary": "#6F97C8",
+   "secondary": "#F6F6FF",
+   "logo": null
+  },
+  {
+   "id": "nlaz",
+   "name": "The Jazzy Quartet",
+   "code": "NLAZ",
+   "era": "Legacy · Minors",
+   "primary": "#F32351",
+   "secondary": "#37EED8",
+   "logo": null
+  },
+  {
+   "id": "nmrv",
+   "name": "Mercury Revolutions",
+   "code": "NMRV",
+   "era": "Legacy · Minors",
+   "primary": "#2A111C",
+   "secondary": "#E45660",
+   "logo": null
+  },
+  {
+   "id": "nlbt",
+   "name": "The Land Before Timers",
+   "code": "NLBT",
+   "era": "Legacy · Minors",
+   "primary": "#870B2A",
+   "secondary": "#F0B8C3",
+   "logo": null
+  },
+  {
+   "id": "ahoh",
+   "name": "Heart of the Hold",
+   "code": "AHOH",
+   "era": "Legacy · Novice",
+   "primary": "#67979C",
+   "secondary": "#B5D5FF",
+   "logo": null
+  },
+  {
+   "id": "atrx",
+   "name": "K-Pop: Re-mon Hunters",
+   "code": "ATRX",
+   "era": "Legacy · Novice",
+   "primary": "#1A203B",
+   "secondary": "#789CFF",
+   "logo": null
+  },
+  {
+   "id": "ahog",
+   "name": "The Handoff God",
+   "code": "AHOG",
+   "era": "Legacy · Novice",
+   "primary": "#6896C5",
+   "secondary": "#F5F5F5",
+   "logo": null
+  },
+  {
+   "id": "atpp",
+   "name": "The Pup Sweeps",
+   "code": "ATPP",
+   "era": "Legacy · Novice",
+   "primary": "#171D24",
+   "secondary": "#AEB7C8",
+   "logo": null
+  },
+  {
+   "id": "albt",
+   "name": "The Land Before Timers",
+   "code": "ALBT",
+   "era": "Legacy · Novice",
+   "primary": "#E1E0E3",
+   "secondary": "#D02B48",
+   "logo": null
+  },
+  {
+   "id": "agas",
+   "name": "Guardian Angles",
+   "code": "AGAS",
+   "era": "Legacy · Novice",
+   "primary": "#131A15",
+   "secondary": "#D7F8E1",
+   "logo": null
+  },
+  {
+   "id": "tri",
+   "name": "Trippin Balls",
+   "code": "TRI",
+   "era": "S39 · Majors",
+   "primary": "#6A45E8",
+   "secondary": "#D3C6FF",
+   "logo": null
+  },
+  {
+   "id": "abo",
+   "name": "A Blockwork Orange",
+   "code": "ABO",
+   "era": "S39 · Majors",
+   "primary": "#E47A2C",
+   "secondary": "#FDE2A7",
+   "logo": null
+  },
+  {
+   "id": "cap",
+   "name": "Capaliers",
+   "code": "CAP",
+   "era": "S39 · Majors",
+   "primary": "#4299CA",
+   "secondary": "#C6EFFC",
+   "logo": null
+  },
+  {
+   "id": "rpo",
+   "name": "Rolly Polies",
+   "code": "RPO",
+   "era": "S39 · Majors",
+   "primary": "#48A388",
+   "secondary": "#C7F2D7",
+   "logo": null
+  },
+  {
+   "id": "mex",
+   "name": "Mex Offenders",
+   "code": "MEX",
+   "era": "S39 · Minors",
+   "primary": "#D35D3F",
+   "secondary": "#FFE0CF",
+   "logo": null
+  },
+  {
+   "id": "lst",
+   "name": "Legends of the Splittin' Temple",
+   "code": "LST",
+   "era": "S39 · Minors",
+   "primary": "#D2B94F",
+   "secondary": "#F9F2C6",
+   "logo": null
+  },
+  {
+   "id": "frb",
+   "name": "Fraggle Block",
+   "code": "FRB",
+   "era": "S39 · Minors",
+   "primary": "#B55185",
+   "secondary": "#FFE0EC",
+   "logo": null
+  },
+  {
+   "id": "bdn",
+   "name": "Balladega Nights",
+   "code": "BDN",
+   "era": "S39 · Minors",
+   "primary": "#5167D5",
+   "secondary": "#DEE3FF",
+   "logo": null
+  }
+ ]
+}
