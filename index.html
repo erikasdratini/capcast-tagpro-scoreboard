@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CAPCAST — TagPro Scoreboard Studio</title><link rel="stylesheet" href="styles.css"></head>
+<body class="dashboard-body">
+<div class="dashboard">
+  <header class="app-header">
+    <div class="brand-mark"><div class="brand-glyph">✦</div><div><div class="brand-title">CAPCAST<span class="brand-period">.</span></div><div class="brand-sub">TAGPRO BROADCAST STUDIO <span class="version">/ V1</span></div></div></div>
+    <div class="header-actions"><span class="server-pill"><span class="server-dot"></span> LOCAL / OFFLINE</span><span id="save-status" class="save-status">READY</span><button id="copy-obs" class="btn btn-quiet">COPY OBS URL ↗</button></div>
+  </header>
+  <main>
+    <div class="page-intro"><div><div class="eyebrow">BROADCAST CONTROL CENTER <span class="dash-line"></span> 01</div><h1>Match <em>command.</em></h1><p>Everything your stream needs. Nothing it doesn't.</p></div><div class="tiny-spec"><span>LIVE SYNC</span><strong>≤ 1 SEC</strong><span>LOCAL SOURCE</span></div></div>
+    <div class="workspace">
+      <div class="primary-pane">
+        <nav class="tabs" aria-label="Dashboard views"><button data-tab="match" class="tab active">01 <b>MATCH</b></button><button data-tab="teams" class="tab">02 <b>TEAM LIBRARY</b></button><button data-tab="maps" class="tab">03 <b>MAP PRESETS</b></button></nav>
+        <section id="view-match" class="view">
+          <div class="panel">
+            <div class="section-heading"><div><div class="eyebrow">01 / MATCH CONFIGURATION</div><h2>Set the stage<span class="title-dot">.</span></h2></div><span class="subdued">Scores update after each game</span></div>
+            <div class="metadata-grid"><label class="field">LEAGUE / DIVISION<input id="meta-league" maxlength="100" placeholder="MLTP · MINORS"></label><label class="field">EVENT / WEEK<input id="meta-event" maxlength="100" placeholder="SEASON 39 · WEEK 1"></label></div>
+            <div class="config-row"><div class="field"><span class="field-label">MATCH FORMAT</span><div class="segmented"><button data-mode="5" class="selected">5 GAMES <small>REGULAR</small></button><button data-mode="7">7 GAMES <small>PLAYOFFS</small></button></div></div><label class="field grow">OVERLAY LABEL<input id="meta-label" maxlength="100" placeholder="REGULAR SEASON"></label></div>
+            <div class="team-select-grid"><div class="team-slot"><span>TEAM 01 <span class="subdued">/ TOP ROW</span></span><button id="choose-a" class="choose-team">SELECT TEAM</button></div><button id="swap-teams" class="swap-btn" title="Swap teams and all their scores">⇄</button><div class="team-slot"><span>TEAM 02 <span class="subdued">/ BOTTOM ROW</span></span><button id="choose-b" class="choose-team">SELECT TEAM</button></div></div>
+          </div>
+          <div class="panel">
+            <div class="section-heading"><div><div class="eyebrow">02 / SCORE ENTRY</div><h2>Game results<span class="title-dot">.</span></h2></div><button id="clear-scores" class="btn btn-quiet danger-text">CLEAR SCORES</button></div>
+            <div class="results-header"><span>GAME / MAP</span><span id="score-header-a">TEAM 01</span><span id="score-header-b">TEAM 02</span><span>OVERTIME</span></div>
+            <div id="game-editor" class="game-editor"></div>
+            <div class="result-footnote"><span class="mini-dot"></span> Enter both final scores to publish that game. Tied games can specify an overtime winner. TOTAL and AGG recalculate automatically.</div>
+          </div>
+          <div class="panel">
+            <div class="section-heading"><div><div class="eyebrow">03 / MAP ROTATION</div><h2>Load a preset<span class="title-dot">.</span></h2></div></div>
+            <div class="preset-row"><select id="match-preset" aria-label="Map preset"></select><button id="apply-preset" class="btn btn-primary">APPLY TO MATCH</button></div>
+            <div class="hint">Applying a preset replaces the map names above but keeps your recorded scores.</div>
+          </div>
+        </section>
+        <section id="view-teams" class="view hidden">
+          <div class="panel"><div class="section-heading"><div><div class="eyebrow">02 / TEAM LIBRARY</div><h2>Every era<span class="title-dot">.</span></h2></div><button id="new-team" class="btn btn-primary">+ NEW TEAM</button></div><div class="toolbar"><input id="library-search" placeholder="Search name, code, division…" aria-label="Search team library"><button id="export-library" class="btn btn-quiet">EXPORT</button><label class="btn btn-quiet file-button">IMPORT<input id="import-library" type="file" accept=".json,.csv,application/json,text/csv" hidden></label></div><div id="library-list" class="library-list"></div><div class="hint">Color values imported from the screenshot are visual approximations. You can replace them with exact hex codes and team logos at any time.</div></div>
+          <div class="panel hidden" id="team-edit-panel"><div class="section-heading"><div><div class="eyebrow">TEAM EDITOR</div><h2 id="team-edit-title">Edit team<span class="title-dot">.</span></h2></div><button id="cancel-team-edit" class="btn btn-quiet">CLOSE</button></div><div class="metadata-grid"><label class="field">TEAM NAME<input id="edit-name" maxlength="110"></label><label class="field">CODE / SHORT NAME<input id="edit-code" maxlength="12"></label><label class="field">TEAM COLOR<input id="edit-primary" type="color"></label><label class="field">SECONDARY COLOR<input id="edit-secondary" type="color"></label><label class="field wide">ERA / LEAGUE NOTE<input id="edit-era" maxlength="80" placeholder="e.g. S39 · Majors"></label><label class="field wide">LOGO IMAGE (PNG, JPG, WEBP; resized locally)<input id="edit-logo" type="file" accept="image/png,image/jpeg,image/webp"></label></div><div class="form-actions"><button id="save-team" class="btn btn-primary">SAVE TEAM</button><button id="remove-logo" class="btn btn-quiet">REMOVE LOGO</button><button id="delete-team" class="btn btn-quiet danger-text">DELETE TEAM</button></div></div>
+        </section>
+        <section id="view-maps" class="view hidden"><div class="panel"><div class="section-heading"><div><div class="eyebrow">03 / MAP PRESETS</div><h2>Rotation control<span class="title-dot">.</span></h2></div></div><p class="panel-copy">Save seven possible map slots per preset. Five-game matches automatically use only the first five. Presets are editable and can be overridden game by game.</p><div class="toolbar"><select id="map-preset-select" aria-label="Edit map preset"></select><button id="new-map-preset" class="btn btn-quiet">+ NEW</button></div><label class="field">PRESET NAME<input id="edit-preset-name" maxlength="100"></label><div id="preset-map-grid" class="preset-map-grid"></div><div class="form-actions"><button id="save-map-preset" class="btn btn-primary">SAVE PRESET</button><button id="delete-map-preset" class="btn btn-quiet danger-text">DELETE PRESET</button></div></div></section>
+      </div>
+      <aside class="preview-pane"><div class="panel preview-panel"><div class="section-heading"><div><div class="eyebrow">TRANSPARENT OUTPUT</div><h2>Program preview<span class="title-dot">.</span></h2></div><div class="status-live"><span class="live-indicator"></span> SYNCED</div></div><div class="preview-grid" id="preview-grid"><iframe id="preview-frame" title="Preview of the live OBS scoreboard" src="overlay.html"></iframe></div><div class="preview-footer"><span id="preview-size">5 GAMES · FIT TO FRAME</span><a href="overlay.html" target="_blank" rel="noopener">OPEN OVERLAY ↗</a></div></div>
+        <div class="panel totals-panel"><div class="eyebrow">AUTO-CALCULATED / COMPLETED GAMES</div><div id="live-totals" class="live-totals"></div><div id="completed-text" class="hint">0 games complete</div></div>
+        <div class="panel helper-panel"><div class="eyebrow">OBS CONNECTION</div><h3>Drop it into OBS.</h3><p>Add a <b>Browser Source</b> with the URL below. OBS sees only the overlay; the controls stay private in this dashboard.</p><div class="url-field"><span id="obs-url">http://127.0.0.1:8765/overlay.html</span><button id="copy-obs-2" title="Copy URL">⧉</button></div><div class="obs-stats"><div>BACKGROUND<strong>TRANSPARENT</strong></div><div>RECOMMENDED HEIGHT<strong>250 PX</strong></div><div>SOURCE WIDTH<strong id="obs-width">1120 PX (5 GAMES)</strong></div></div><label class="field">OVERLAY SIZE <span id="scale-value" class="value-label">100%</span><input id="overlay-scale" type="range" min="60" max="150" step="5" value="100"></label><p class="hint">Keep the OBS source on the same computer as this dashboard. To fit your scene, resize with OBS's Transform tool or change the scale above.</p></div>
+        <div class="panel backup-panel"><div class="eyebrow">DATA SAFETY</div><h3>Your match. Your files.</h3><p>Changes are stored on this computer. Save a complete backup or restore an earlier one.</p><div class="toolbar"><button id="export-backup" class="btn btn-quiet">DOWNLOAD BACKUP</button><label class="btn btn-quiet file-button">RESTORE BACKUP<input id="import-backup" type="file" accept=".json,application/json" hidden></label></div></div>
+      </aside>
+    </div>
+    <footer class="app-footer">CAPCAST / LOCAL BROADCAST TOOLS <span>BUILT FOR TAGPRO · NO CLOUD REQUIRED</span></footer>
+  </main>
+</div>
+<div id="picker-overlay" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-label="Select a team"><div class="picker-modal"><div class="section-heading"><div><div class="eyebrow">TEAM SELECTION</div><h2>Pick a team<span class="title-dot">.</span></h2></div><button id="close-picker" class="btn btn-quiet">✕ CLOSE</button></div><input id="picker-search" autofocus placeholder="Search 30+ teams, codes, divisions…"><div id="picker-list" class="picker-list"></div></div></div>
+<div id="toast" role="status" aria-live="polite" class="toast hidden"></div>
+<script src="app.js"></script>
+</body></html>

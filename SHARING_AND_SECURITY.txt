@@ -1,0 +1,25 @@
+CAPCAST v1.1 — COMMUNITY SHARING / SECURITY
+===========================================
+This package runs locally with Python 3 and OBS; no third-party Python packages.
+
+INSTALL: Extract the ZIP (not directly within an archive). On Windows, run
+start-windows.bat. Open http://127.0.0.1:8765/ in your browser.
+In OBS, add a Browser Source with http://127.0.0.1:8765/overlay.html.
+Keep the server window open during broadcasts.
+
+SECURITY: The server binds only to 127.0.0.1, not the LAN or internet.
+It uses static-file allowlisting, input validation, POST size limits, a
+restrictive CSP, and Host, Origin, and content-type checks. This is not a
+formal independent security audit and not a guarantee of complete safety.
+It has no user authentication; other software on the same computer may be
+able to read or modify local scoreboard data. Don't expose/forward its port.
+Only import trusted files. Avoid sharing personal backups publicly.
+
+DATA: Stores your changes inside data/state.json. The included state has
+30 starter team entries (historical/placeholder colors, no actual logos),
+example maps, and no entered scores. Updates must preserve your own state.json;
+back up first. The included starter file contains no personal accounts.
+
+DISTRIBUTION: Share this ZIP (or host its code on GitHub). Consider choosing
+a software license if you want to permit others to modify/redistribute it.
+Team logos added by users may be covered by their owners' rights.
