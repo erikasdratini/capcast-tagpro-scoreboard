@@ -1,25 +1,61 @@
-CAPCAST v1.1 — COMMUNITY SHARING / SECURITY
-===========================================
-This package runs locally with Python 3 and OBS; no third-party Python packages.
+CAPCAST v1.1.1 - COMMUNITY SHARING / SECURITY
+==============================================
+Runs locally with Python 3.11+ (3.9 and 3.10 still work, with a warning)
+and OBS Studio. No third-party Python packages.
 
-INSTALL: Extract the ZIP (not directly within an archive). On Windows, run
-start-windows.bat. Open http://127.0.0.1:8765/ in your browser.
-In OBS, add a Browser Source with http://127.0.0.1:8765/overlay.html.
-Keep the server window open during broadcasts.
+INSTALL: Extract the ZIP to a new folder (not inside the archive). Compare
+the ZIP's SHA-256 with the one in the release notes. On Windows run
+start-windows.bat; on macOS/Linux run start-mac.command / start-linux.sh,
+or:  python3 server.py
+Dashboard: http://127.0.0.1:8765/   OBS Browser Source:
+http://127.0.0.1:8765/overlay.html   Keep the server window open.
 
-SECURITY: The server binds only to 127.0.0.1, not the LAN or internet.
-It uses static-file allowlisting, input validation, POST size limits, a
-restrictive CSP, and Host, Origin, and content-type checks. This is not a
-formal independent security audit and not a guarantee of complete safety.
-It has no user authentication; other software on the same computer may be
-able to read or modify local scoreboard data. Don't expose/forward its port.
-Only import trusted files. Avoid sharing personal backups publicly.
+SECURITY - WHAT CAPCAST DOES (each item is covered by the automated tests):
+- Listens only on 127.0.0.1, so other devices cannot connect.
+- Answers only requests addressed to exactly 127.0.0.1:<port> (blocks DNS
+  rebinding). "localhost" is refused on purpose.
+- Refuses changes that do not come from its own pages: every write needs
+  the dashboard's Origin and a JSON body. Requests that browsers mark as
+  coming from another site are refused, except plain links to the pages.
+- Tells browsers not to let other sites load or frame its files, and uses a
+  strict Content-Security-Policy (no inline scripts or styles).
+- Serves only a fixed list of files.
+- Checks every save against a strict format: types, lengths, limits, and
+  image type and dimensions read from each logo's header (logos up to
+  2048x2048 and 600 KB; new logos are resized to 256 px in the browser).
+- Refuses to let one dashboard overwrite another's newer changes, or data
+  that CAPCAST was restarted with.
+- Writes data atomically, keeps automatic backups, removes its temporary
+  files, and cleans up any leftovers at the next start.
+- Checks data/state.json at startup and whenever it changes on disk. A bad
+  file is set aside in data/quarantine/ and is never shown.
 
-DATA: Stores your changes inside data/state.json. The included state has
-30 starter team entries (historical/placeholder colors, no actual logos),
-example maps, and no entered scores. Updates must preserve your own state.json;
-back up first. The included starter file contains no personal accounts.
+WHAT CAPCAST DOES NOT DO:
+- There is no login. Other software running on this computer under your
+  account can read or change your scoreboard data.
+- Web pages in your browser can still reach 127.0.0.1; CAPCAST refuses
+  their requests, but very old browsers without Sec-Fetch-Site headers get
+  less protection against a site detecting that CAPCAST is running.
+- A crafted team library or backup can still make the dashboard slow while
+  it is checked. Only import files from people you trust.
+- Do not expose or port-forward port 8765.
 
-DISTRIBUTION: Share this ZIP (or host its code on GitHub). Consider choosing
-a software license if you want to permit others to modify/redistribute it.
-Team logos added by users may be covered by their owners' rights.
+REVIEW STATUS: v1.1.1 received an AI-assisted code review, an adversarial
+re-test and automated tests on Linux (Python 3.9-3.14, Chrome). It has NOT
+had a formal independent security audit or penetration test, and it has not
+yet been tested on Windows, on macOS or inside OBS by the maintainers. No
+software can be guaranteed completely safe.
+
+FILES: Backups contain your whole team library, including logos; review
+them before sharing. Imported logos are re-encoded, which also removes
+photo metadata such as location.
+
+DATA: Stored in data/state.json (created from starter-state.json on first
+run). Automatic copies are kept in data/backups/; files CAPCAST refused are
+kept in data/quarantine/. To upgrade: DOWNLOAD BACKUP in the old version,
+extract the new version to a new folder, then RESTORE BACKUP there.
+
+REPORTING SECURITY PROBLEMS: see SECURITY.md. Please report privately, not
+in a public issue.
+
+LICENSE: MIT (see LICENSE). Team names and logos may belong to their owners.

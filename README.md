@@ -6,7 +6,7 @@
 
 No subscriptions. No accounts. No cloud services. Just a scoreboard that works.
 
-**[Download the latest CAPCAST release](https://github.com/erikasdratini/capcast-tagpro-scoreboard/releases/tag/v1.1.0)** · [Installation](#installation) · [Features](#features) · [Privacy & security](#privacy-and-security)
+**[Download the latest CAPCAST release](https://github.com/erikasdratini/capcast-tagpro-scoreboard/releases/tag/v1.1.1)** · [Installation](#installation) · [Features](#features) · [Privacy & security](#privacy-and-security)
 
 ## Screenshots
 
@@ -25,9 +25,9 @@ No subscriptions. No accounts. No cloud services. Just a scoreboard that works.
 ---
 
 
-**Version:** 1.1 — Community Beta  
+**Version:** 1.1.1 — Community Beta ([changelog](CHANGELOG.md))  
 **Platforms:** Windows, macOS, Linux  
-**Requirements:** Python 3 and OBS Studio  
+**Requirements:** Python 3.11 or newer (3.9 and 3.10 still run, with a warning) and OBS Studio (31 or newer recommended)  
 **Cost:** Free
 
 ---
@@ -55,12 +55,14 @@ No subscriptions. No accounts. No cloud services. Just a scoreboard that works.
 - Clear scores between matches.
 - Preview the broadcast scoreboard before and during a stream.
 - Update the OBS overlay automatically when changes are made.
+- See at a glance whether OBS is showing the latest scores (`OBS IN SYNC · REV n`), with a clear warning when it is not.
+- Keep two open dashboards from overwriting each other.
 
 ### Customizable team library
 - 30 starter team records, including historical competitive TagPro teams.
 - Add, edit, and remove teams.
 - Customize team abbreviations and colors.
-- Upload PNG, JPG, or WebP team logos.
+- Upload PNG, JPG, or WebP team logos (resized to 256 px on your computer).
 - Search teams by name, abbreviation, or division.
 - Import and export team databases using JSON or CSV.
 
@@ -75,7 +77,8 @@ No subscriptions. No accounts. No cloud services. Just a scoreboard that works.
 
 ### Local data and backups
 - Automatically save match and team configuration data.
-- Restore previously saved configurations.
+- Automatic safety copies in `data/backups/` before risky actions.
+- Restore previously saved configurations, including v1.1 backups, with a preview of what will change.
 - Export backups for safekeeping.
 - Retain settings between sessions.
 - Operate without external servers or accounts.
@@ -86,7 +89,7 @@ No subscriptions. No accounts. No cloud services. Just a scoreboard that works.
 
 **[Download CAPCAST from GitHub Releases](../../releases)**
 
-Download the latest ZIP from the Releases section and extract it to a folder on your computer.
+Download the latest ZIP from the Releases section and extract it to a new folder on your computer. You can check the download against the SHA-256 checksum in the release notes.
 
 You do not need to install Git or clone the repository.
 
@@ -98,7 +101,7 @@ You do not need to install Git or clone the repository.
 
 **Step 1 — Install Python**
 
-CAPCAST requires Python 3.
+CAPCAST requires Python 3.11 or newer (3.12+ preferred). Python 3.9 and 3.10 still start CAPCAST, but show a warning because they no longer receive security updates.
 
 If you don't already have it installed, download it from:
 
@@ -142,7 +145,7 @@ If it doesn't, navigate to:
 python3 server.py
 ```
 
-You can also use the included `start-mac.command` launcher if your system permits it.
+You can also use the included `start-mac.command` launcher. The first time, macOS may ask you to confirm opening a downloaded file (right-click → Open).
 
 ### Linux
 
@@ -179,9 +182,9 @@ http://127.0.0.1:8765/overlay.html
 
 | Setting | Recommended value |
 |---|---|
-| Width | 1450 |
-| Height | 280 |
+| Width / Height | As shown under **SOURCE WIDTH / SOURCE HEIGHT** in the dashboard's OBS panel (about 1100 × 260 for 5 games, 1320 × 260 for 7 games, at 100%) |
 | Local file | Unchecked |
+| Page permissions | No access to OBS |
 | Custom CSS | Default is fine |
 
 9. Click **OK**.
@@ -228,7 +231,20 @@ CAPCAST automatically updates:
 
 Winning scores are visually highlighted.
 
-For tied regulation scores, you can enable the overtime option and specify the overtime winner. Overtime determines the game winner but does not automatically add additional caps to the aggregate total.
+For tied regulation scores, tick **OT GAME** and choose the overtime winner. Until you do, the tied game is shown as pending and is not counted. The overtime winner wins the game and gets one extra cap on stream and in the aggregate: a 2–2 game won in overtime by the top team shows 3–2. The score boxes keep the 2–2 you entered, and the extra cap is removed if you untick **OT GAME** or clear the winner. If the entered scores are not tied, no cap is added.
+
+Score boxes accept whole numbers from 0 to 999. Anything else turns red and is **not published** until it is fixed. The mouse wheel never changes a score.
+
+### Sync status
+
+The top right of the dashboard always shows two things:
+
+- **SAVED · REV n**: your changes are saved. If saving is blocked, a red banner explains why and what to do.
+- **OBS IN SYNC · REV n**: the OBS browser source is showing exactly that saved version. If OBS falls behind, shows an error, or is not connected, the dashboard says so instead. It never claims OBS is in sync while changes are still waiting to be saved.
+
+The dashboard checks the status once a second. Your own edits switch it to **WAITING FOR SAVE** straight away. A change made somewhere else, such as another window, a restart of CAPCAST, or an edited `state.json`, can take up to about 2 seconds to show.
+
+If CAPCAST is restarted with different saved data while the dashboard has unsaved edits, the dashboard shows **CAPCAST WAS RESTARTED** and does not overwrite anything until you choose.
 
 ### 4. Start the next match
 
@@ -283,24 +299,18 @@ No third-party Python packages are required.
 
 ## Privacy and Security
 
-CAPCAST is designed to operate locally.
+CAPCAST runs entirely on your computer. It makes no internet requests, uses no analytics or accounts, and needs no third-party Python packages.
 
-- The server binds to `127.0.0.1`, rather than accepting connections from your local network or the public internet.
-- Match data is stored on your own computer.
-- No user account or authentication service is required.
-- No external analytics or cloud synchronization is used.
-- No third-party Python packages are needed.
-- The server includes input validation, request-size limits, restricted file serving, and request-origin checks.
+- The server listens only on `127.0.0.1`. Other devices on your network or the internet cannot connect unless you forward the port. **Do not expose or port-forward port 8765.**
+- Web pages open in your browser *can* send requests to `127.0.0.1`. CAPCAST refuses requests whose `Host` or `Origin` is not `http://127.0.0.1:8765`, and requests that browsers mark as coming from another site. It also tells browsers not to let other sites load or frame its files.
+- Every save is checked against a strict format, including the type and dimensions of logos. New logos are resized to 256 px in your browser.
+- Each saved version gets a revision number. A dashboard working from an older revision cannot overwrite a newer one, and the dashboard shows whether OBS is displaying the latest saved version.
+- Data is written atomically. Automatic copies are kept in `data/backups/`, and any file CAPCAST refuses to load is kept in `data/quarantine/`.
+- There is no login. Other software running on your computer under your account can read or change CAPCAST's data.
+- Only import team libraries, backups and logos from sources you trust.
+- In OBS, set the Browser Source's **Page permissions** to **No access to OBS**.
 
-**Security considerations:**
-
-CAPCAST is an experimental community release and has not received an independent security audit.
-
-The local dashboard does not use authentication, so other software running on the same computer may potentially access its data.
-
-Do not expose or port-forward port `8765` to the internet. Only import backups and files from sources you trust, and keep your Python installation updated.
-
-The source code is available in this repository for community inspection.
+**Review status:** v1.1.1 received an AI-assisted code review, a separate adversarial re-test, and automated tests on Linux (Python 3.9–3.14, Chromium). This is **not** a formal security audit, penetration test or certification, and the maintainers have not yet tested it on Windows, on macOS or inside OBS. Please report security issues privately; see [SECURITY.md](SECURITY.md).
 
 ---
 
@@ -312,14 +322,15 @@ CAPCAST saves its local application state in:
 
 This includes team configurations, map presets, and match data.
 
-Before installing a newer version:
+To upgrade (for example from v1.1):
 
-1. Download a backup from the control dashboard.
-2. Keep a copy of your current `data/state.json`.
-3. Download and extract the new CAPCAST release.
-4. Restore your previous data if necessary.
+1. In the old version, click **DOWNLOAD BACKUP**.
+2. Extract the new release to a **new** folder and start it.
+3. Click **RESTORE BACKUP** and choose the file from step 1. CAPCAST shows what will change and asks before replacing anything.
 
-**Do not overwrite your existing `state.json` without backing it up first.**
+You can also copy your old `data/state.json` into the new folder's `data/` folder before the first start. CAPCAST upgrades it automatically, keeps an exact copy of the original in `data/backups/`, and lists any adjustments under **SERVER NOTICES**.
+
+The release ZIP no longer contains `data/state.json`. Extracting a new version over an old folder therefore cannot overwrite your data.
 
 ---
 
@@ -335,7 +346,9 @@ Currently:
 - The control dashboard and OBS overlay must run on the same computer.
 - Direct Excel (`.xlsx`) importing is not supported.
 - Historical team colors and logos are not yet fully verified.
-- The application has not undergone an independent security audit.
+- The application has not undergone a formal independent security audit. v1.1.1 was reviewed with AI assistance and tested automatically on Linux only; it still needs testing on Windows, on macOS and inside OBS.
+- If OBS gives custom browser docks the same `window.obsstudio` object as browser sources, an overlay opened as a dock counts as an OBS source in the sync status.
+- OBS 30 and older use an older browser engine, so parts of the overlay styling may look different there.
 
 These limitations may be addressed in future versions.
 
@@ -361,7 +374,18 @@ If you're interested in improving CAPCAST, feel free to review the source code, 
 
 Please avoid including personal match backups, private account information, or copyrighted team graphics without permission.
 
-Before redistributing modified versions, check the repository's applicable license.
+CAPCAST is released under the [MIT License](LICENSE).
+
+### Running the tests
+
+```bash
+python3 -B -m unittest discover -s tests -p 'test_server.py'   # server, standard library only
+python3 -B -m unittest tests.test_parity tests.test_scoring    # needs Node.js
+pip install playwright && python -m playwright install chromium
+python3 -B -m unittest tests.e2e.test_e2e                       # browser tests
+python3 -B -m unittest tests.test_dist                          # builds and checks the release ZIP (Linux/macOS)
+python3 tools/build_release.py                                  # builds dist/ ZIP + SHA256SUMS.txt
+```
 
 ---
 
