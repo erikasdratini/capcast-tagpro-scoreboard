@@ -40,11 +40,15 @@ WHAT CAPCAST DOES NOT DO:
   it is checked. Only import files from people you trust.
 - Do not expose or port-forward port 8765.
 
-REVIEW STATUS: v1.1.1 received an AI-assisted code review, an adversarial
-re-test and automated tests on Linux (Python 3.9-3.14, Chrome). It has NOT
-had a formal independent security audit or penetration test, and it has not
-yet been tested on Windows, on macOS or inside OBS by the maintainers. No
-software can be guaranteed completely safe.
+REVIEW STATUS: CAPCAST v1.1.1 underwent AI-assisted code review,
+adversarial retesting, and automated regression and browser testing on
+Linux. A limited manual rehearsal also passed on Windows using OBS
+Studio 33.0.1, including Browser Source rendering, synchronization,
+overtime scoring, match totals, five/seven-game layouts, and logos.
+macOS compatibility and extended live-broadcast reliability remain
+unverified. CAPCAST has not undergone a formal independent security
+audit, penetration test, or certification. No software can be
+guaranteed completely safe.
 
 FILES: Backups contain your whole team library, including logos; review
 them before sharing. Imported logos are re-encoded, which also removes
