@@ -40,8 +40,11 @@ Version 1.1.1 introduces floating team logos with subtle, team-colored glows, re
 
 
 **Version:** 1.1.1 — Community Beta ([changelog](CHANGELOG.md))  
+
 **Platforms:** Windows, macOS, Linux  
-**Requirements:** Python 3.11 or newer (3.9 and 3.10 still run, with a warning) and OBS Studio (31 or newer recommended)  
+
+**Requirements:** Python 3.11 or newer recommended (3.9 and 3.10 also run, with a compatibility warning) and OBS Studio (31 or newer recommended)
+
 **Cost:** Free
 
 ---
@@ -101,11 +104,17 @@ Version 1.1.1 introduces floating team logos with subtle, team-colored glows, re
 
 ## Download
 
-**[Download CAPCAST from GitHub Releases](../../releases)**
+**[Download CAPCAST v1.1.1 from GitHub Releases](https://github.com/erikasdratini/capcast-tagpro-scoreboard/releases/tag/v1.1.1)**
 
-Download the latest ZIP from the Releases section and extract it to a new folder on your computer. You can check the download against the SHA-256 checksum in the release notes.
+**For normal installation, download this exact file:**
 
-You do not need to install Git or clone the repository.
+`CAPCAST_TagPro_OBS_Scoreboard_Community_v1.1.1.zip`
+
+Extract it to a new folder on your computer.
+
+The separate source-code archives are intended for developers. You do not need them, Git, or a GitHub account to run CAPCAST.
+
+You can verify your download using the SHA-256 checksum supplied in the release notes.
 
 ---
 
@@ -115,7 +124,7 @@ You do not need to install Git or clone the repository.
 
 **Step 1 — Install Python**
 
-CAPCAST requires Python 3.11 or newer (3.12+ preferred). Python 3.9 and 3.10 still start CAPCAST, but show a warning because they no longer receive security updates.
+CAPCAST recommends Python 3.11 or newer (3.12+ preferred). Python 3.9 and 3.10 can still run CAPCAST but display a compatibility warning because those versions no longer receive security updates.
 
 If you don't already have it installed, download it from:
 
@@ -128,7 +137,7 @@ No additional Python packages are required.
 **Step 2 — Download CAPCAST**
 
 1. Open the Releases section of this repository.
-2. Download the latest CAPCAST ZIP.
+2. Download `CAPCAST_TagPro_OBS_Scoreboard_Community_v1.1.1.zip` (not the source-code ZIP).
 3. Right-click the ZIP and select **Extract All**.
 4. Open the extracted `CAPCAST_TagPro_Scoreboard` folder.
 
@@ -150,16 +159,24 @@ If it doesn't, navigate to:
 
 ### macOS
 
-1. Install Python 3 if necessary.
-2. Download and extract CAPCAST.
-3. Open Terminal in the extracted folder.
-4. Run:
+1. Install Python 3.11 or newer from [python.org](https://www.python.org/downloads/) if necessary (Python 3.12+ preferred).
+2. Download `CAPCAST_TagPro_OBS_Scoreboard_Community_v1.1.1.zip` from the [v1.1.1 release](https://github.com/erikasdratini/capcast-tagpro-scoreboard/releases/tag/v1.1.1).
+3. Extract the ZIP and open the `CAPCAST_TagPro_Scoreboard` folder.
+4. Open Terminal in that folder and run:
 
 ```bash
 python3 server.py
 ```
 
-You can also use the included `start-mac.command` launcher. The first time, macOS may ask you to confirm opening a downloaded file (right-click → Open).
+5. Open `http://127.0.0.1:8765/` in your browser if it does not open automatically.
+
+Keep Terminal open while using CAPCAST.
+
+**Optional launcher:** You can also double-click `start-mac.command`. On macOS 15 or later, if macOS blocks the launcher, first confirm that you downloaded it from the official CAPCAST release. After attempting to open it, go to **System Settings → Privacy & Security**, scroll to the security warning, and select **Open Anyway**, if available. Follow the confirmation prompts.
+
+For the simplest installation, use the Terminal command above instead of the optional launcher.
+
+**Note:** macOS compatibility has not yet been verified through a complete manual installation test.
 
 ### Linux
 
