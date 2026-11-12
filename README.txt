@@ -20,9 +20,19 @@ QUICK START (WINDOWS)
 6. The dashboard is: http://127.0.0.1:8765/   (use 127.0.0.1, not "localhost")
 
 MAC / LINUX
-Open Terminal in the extracted folder and run:  python3 server.py
-Or use start-mac.command / start-linux.sh. (macOS may ask you to confirm
-opening a downloaded file the first time: right-click > Open.)
+Install Python 3.11 or newer (3.12+ preferred) if necessary.
+Open Terminal in the extracted CAPCAST_TagPro_Scoreboard folder and run:
+    python3 server.py
+Keep Terminal open while using CAPCAST.
+
+macOS: The optional start-mac.command launcher may be blocked by
+Gatekeeper. On macOS 15 or newer, after attempting to open it, go to
+System Settings > Privacy & Security > Open Anyway, if available,
+and follow the confirmation prompts. Only approve files downloaded
+from the official CAPCAST release. The Terminal method above is an
+alternative. macOS has not yet been manually verified.
+
+Linux: You can also use start-linux.sh from the official release ZIP.
 Options: --port 8766 (another port), --no-browser (don't open a tab).
 
 WORKFLOW
