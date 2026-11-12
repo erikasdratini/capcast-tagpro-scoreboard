@@ -324,7 +324,7 @@ CAPCAST runs entirely on your computer. It makes no internet requests, uses no a
 - Only import team libraries, backups and logos from sources you trust.
 - In OBS, set the Browser Source's **Page permissions** to **No access to OBS**.
 
-**Review status:** v1.1.1 received an AI-assisted code review, a separate adversarial re-test, and automated tests on Linux (Python 3.9–3.14, Chromium). This is **not** a formal security audit, penetration test or certification, and the maintainers have not yet tested it on Windows, on macOS or inside OBS. Please report security issues privately; see [SECURITY.md](SECURITY.md).
+**Review status:** CAPCAST v1.1.1 received an AI-assisted code review, a separate adversarial re-test, and automated testing on Linux using Python 3.9–3.14 and Chromium. The maintainer also successfully performed a limited manual rehearsal on Windows using OBS Studio 33.0.1, verifying Browser Source rendering, synchronization, score calculations, overtime, five/seven-game layouts, and team logos. macOS compatibility and extended live-broadcast reliability remain unverified. This review does not constitute a formal security audit, penetration test, or certification. Please report security issues privately; see [SECURITY.md](SECURITY.md).
 
 ---
 
@@ -360,7 +360,7 @@ Currently:
 - The control dashboard and OBS overlay must run on the same computer.
 - Direct Excel (`.xlsx`) importing is not supported.
 - Historical team colors and logos are not yet fully verified.
-- The application has not undergone a formal independent security audit. v1.1.1 was reviewed with AI assistance and tested automatically on Linux only; it still needs testing on Windows, on macOS and inside OBS.
+- **Security review and platform testing:** CAPCAST v1.1.1 has undergone AI-assisted code review, adversarial retesting, and automated testing on Linux. A limited manual Windows/OBS Studio 33.0.1 rehearsal also passed. However, the application has not undergone a formal independent security audit, macOS testing is outstanding, and extended live-broadcast reliability has not yet been verified.
 - If OBS gives custom browser docks the same `window.obsstudio` object as browser sources, an overlay opened as a dock counts as an OBS source in the sync status.
 - OBS 30 and older use an older browser engine, so parts of the overlay styling may look different there.
 
