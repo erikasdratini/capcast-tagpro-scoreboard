@@ -90,7 +90,7 @@ A patch release that fixes the issues found in the v1.1 security review. The loo
 
 ### Known limitations
 
-- Tested on Linux only, with Google Chrome for Testing as the browser. Not yet tested in OBS Studio itself, or on Windows or macOS (see SECURITY.md).
+- **Platform testing:** Automated regression and browser tests passed on Linux. A limited manual rehearsal also passed on Windows using OBS Studio 33.0.1, including Browser Source rendering, synchronization, overtime scoring, match totals, five/seven-game layouts, and logos. macOS compatibility and extended live-broadcast reliability remain unverified (see [SECURITY.md](SECURITY.md)).
 - The overlay decides whether it is "OBS" from `window.obsstudio`. If OBS also provides that to custom browser docks, an overlay opened as a dock counts as an OBS source.
 - Another website can open the dashboard in a new window. It cannot read or change anything, but the window counts as a second dashboard until closed.
 - Any program on your computer can open many idle connections and slow CAPCAST down for about 15 seconds. This is the cost of a small local server with no accounts.
@@ -100,6 +100,6 @@ A patch release that fixes the issues found in the v1.1 security review. The loo
 
 New automated tests: `tests/test_server.py` (52), `tests/test_parity.py` (5), `tests/test_scoring.py` (4), `tests/test_dist.py` (6) and `tests/e2e/test_e2e.py` (24). They cover regression cases R-01 to R-18 from the v1.1 review, the findings of an independent review of this release, and normal scoreboard use.
 
-## 1.1 (2026-11-11)
+## 1.1.0 (2026-11-11)
 
 Initial community release.
