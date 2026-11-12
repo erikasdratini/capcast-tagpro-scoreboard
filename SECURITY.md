@@ -53,7 +53,9 @@ v1.1.1 received an AI-assisted code review, a separate adversarial re-test and a
 - `tests/test_dist.py`, which builds the release ZIP and checks its contents and launchers;
 - `tests/e2e/test_e2e.py`, browser tests with Playwright and Chromium.
 
-This is **not** a formal security audit, penetration test or certification. The maintainers have not yet tested it on Windows, on macOS or inside OBS.
+This review does not constitute a formal security audit, penetration test, or certification.
+
+**Platform verification:** A limited manual rehearsal was successfully completed on Windows with OBS Studio 33.0.1. Browser Source rendering, synchronization, overtime scoring, automatic totals, five/seven-game layouts, and team logos were verified. Automated testing was also completed on Linux. macOS compatibility and extended live-broadcast reliability remain unverified.
 
 ## Known limitations
 
