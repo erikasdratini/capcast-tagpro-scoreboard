@@ -22,7 +22,7 @@ No subscriptions. No accounts. No cloud services. Just a scoreboard that works.
 
 ![CAPCAST control dashboard with match configuration and OBS preview](screenshots/control-dashboard.png)
 
-### Logo Design Update — v1.1.1
+## Design Notes — Logo Update (v1.1.1)
 
 Version 1.1.1 introduces floating team logos with subtle, team-colored glows, replacing the previous boxed appearance.
 
